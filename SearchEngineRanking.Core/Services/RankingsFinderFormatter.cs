@@ -4,11 +4,11 @@ namespace SearchEngineRanking.Core.Services;
 
 public class RankingsFinderFormatter : IRankingFinderFormatter
 {
-  private IRankingsFinder _finder { get; set; }
+  private IRankingsFinder _finder { get; set; } 
 
   public RankingsFinderFormatter()
   {
-    
+    _finder = new RankingsFinder();
   }
 
   public RankingsFinderFormatter(IRankingsFinder finder)

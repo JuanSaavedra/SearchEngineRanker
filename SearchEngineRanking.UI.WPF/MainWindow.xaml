@@ -110,7 +110,7 @@
             <ListView.View>
                 <GridView>
 
-                    <GridViewColumn Header="Ranking" Width="50" DisplayMemberBinding="{Binding Ranking}" />
+                    <GridViewColumn Header="Ranking" Width="50" DisplayMemberBinding="{Binding ResultItemPosition}" />
 
                     <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
 

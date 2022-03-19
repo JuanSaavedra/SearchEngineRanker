@@ -1,6 +1,5 @@
 ﻿using SearchEngineRanking.Core.Services;
 using System.Windows;
-using System.Windows.Input;
 using log4net;
 using SearchEngineRanking.Core.Messages.Requests;
 using SearchEngineRanking.Core.Messages.Responses;
@@ -20,12 +19,7 @@ namespace SearchEngineRanking.WPF
     void Show();
   }
 
-  public interface ICommand
-  {
-    void ExecuteSearch();
-  }
-
-  public partial class MainWindow : Window, IMainWindow, ICommand
+  public partial class MainWindow : Window, IMainWindow
   {
     ILog _log = LogManager.GetLogger("MainWindow");
 
@@ -121,12 +115,8 @@ namespace SearchEngineRanking.WPF
 
     private void Processor_Completed_SaveResultsToFile(GoogleSearchResultResponse googleSearchResultResponse)
     {
-      // save results to file for support if needed
-    }
-
-    public void ExecuteSearch()
-    {
-      throw new System.NotImplementedException();
+      // save results to file for support if needed ..
+      //File.WriteAllLines(@"C:\Temp\searchUtilityResults.html");
     }
 
     /// <summary>

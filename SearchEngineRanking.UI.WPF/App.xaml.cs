@@ -33,7 +33,7 @@ namespace SearchEngineRanking.WPF
 
       // setup IoC container
       var unityContainer = new UnityContainer();
-      unityContainer.RegisterType<IGoogleSearcher, DevGoogleSearcher>();
+      unityContainer.RegisterType<IGoogleSearcher, GoogleSearcher>();
       unityContainer.RegisterType<IMainWindow, MainWindow>();
       unityContainer.RegisterType<IGoogleSearchResultScrapperRegexProvider, GoogleSearchResultScrapperRegexProvider>();
       unityContainer.RegisterType<ISearchResultsScrapper, GoogleSearchResultsScrapper>();
