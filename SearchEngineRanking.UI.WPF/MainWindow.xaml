@@ -1,0 +1,122 @@
+﻿<Window x:Class="SearchEngineRanking.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:SearchEngineRanking.WPF"
+        mc:Ignorable="d"
+        Title="Search Engine Ranking Utility. v.1.0" Height="850" Width="1050" ResizeMode="NoResize">
+
+
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="28" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Row 0 -->
+        <Image Grid.Row="0" Margin="10" >
+            <Image.Source>
+                <BitmapImage UriSource="/../../images/smokeball.jpg"  />
+            </Image.Source>
+        </Image>
+
+        <!-- Row 1 -->
+        <Label FontSize="20" FontWeight="Bold" Margin="10" Grid.Row="1" Grid.Column="0" Content="Company URL:"/>
+        <TextBox MaxLength="50" Width="800" HorizontalAlignment="Left" FontSize="20" Padding="5" Name="txtCompanyURL"
+                  Style="{StaticResource GeneralErrorStyle}"
+                 Grid.Column="1" Grid.Row="1" Margin="10" 
+                 
+                 Text="{Binding CompanyURL, ValidatesOnDataErrors=True}" 
+                 
+                 BorderBrush="#FFDC7D14" Background="#FFFAF2E7" FontFamily="Arial">
+
+     
+      <TextBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+
+        <!-- Row 2 -->
+        <Label FontSize="20" FontWeight="Bold" Margin="10" Grid.Row="2" Grid.Column="0" Content="Keywords:"/>
+    <TextBox 
+      Style="{StaticResource GeneralErrorStyle}"
+      Width="800" HorizontalAlignment="Left"  Text="{Binding KeyWords,ValidatesOnDataErrors=True}"  BorderBrush="#FFDC7D14" Background="#FFFAF2E7" FontFamily="Arial"
+             SpellCheck.IsEnabled="True" MaxLength="50" FontSize="20" Padding="5"
+             Name="txtKeyWords" Grid.Column="1" Grid.Row="2" Margin="10" >
+            <TextBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <!-- Row 3 -->
+
+        <Grid Grid.Column="0" ColumnSpan="2" Grid.Row="3">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <fa:ImageAwesome Visibility="Hidden" Foreground="#FFF1A607"  Name="loadingCog" Icon="Cog"  
+                       Margin="10,0,0,0" HorizontalAlignment="Left"
+                       Grid.Column="0" Grid.Row="0" Spin="True" Height="38" Width="38" />
+
+            <fa:ImageAwesome Visibility="Hidden" Foreground="Green"  Name="Check" Icon="CheckCircle"  
+                       Margin="10,0,0,0" HorizontalAlignment="Left"
+                       Grid.Column="0" Grid.Row="0" Spin="False" Height="38" Width="38" />
+
+            <TextBlock Foreground="Green" VerticalAlignment="Center" FontFamily="Arial" FontSize="20" Padding="5" Margin="50,10,10,10" 
+                 Grid.Row="0" Grid.Column="0" Visibility="Hidden" Name="FeedbackTB">
+            </TextBlock>
+
+
+            <Button BorderThickness="0"    Click="GetSearchResultsButton_Click"
+              
+                    FontSize="20" 
+              Grid.Column="0" Grid.Row="0"  
+              HorizontalAlignment="Right"
+              MinWidth="100" Name="SearchButton"
+              Margin="0,10,20,0" Content="Search" Foreground="White" Background="#FFF1A607" FontFamily="Arial">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+
+        <!-- Row 4 -->
+        <ListView Margin="10" Name="lvSearchResults" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn Header="Ranking" Width="50" DisplayMemberBinding="{Binding Ranking}" />
+
+                    <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
+
+                    <GridViewColumn Header="URL" Width="Auto" DisplayMemberBinding="{Binding Url}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

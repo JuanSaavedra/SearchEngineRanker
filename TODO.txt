@@ -1,0 +1,5 @@
+- implement MVVM
+- improve tests
+- implement search against Bing
+- add notifications to developers if problem
+- keep history of ranking

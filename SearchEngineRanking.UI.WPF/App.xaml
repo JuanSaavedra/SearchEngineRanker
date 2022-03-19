@@ -1,0 +1,45 @@
+﻿<Application x:Class="SearchEngineRanking.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SearchEngineRanking.WPF">
+    <Application.Resources>
+
+      <LinearGradientBrush x:Key="GrayBlueGradientBrush" StartPoint="0,0" EndPoint="1,1">
+      <GradientStop Color="DarkGray" Offset="0" />
+      <GradientStop Color="#CCCCFF" Offset="0.5" />
+      <GradientStop Color="DarkGray" Offset="1" />
+    </LinearGradientBrush>
+
+      <Style x:Key="GeneralErrorStyle">
+        <Setter Property="Validation.ErrorTemplate">
+          <Setter.Value>
+            <ControlTemplate>
+              <DockPanel>
+                <TextBlock DockPanel.Dock="Right"
+                            Margin="4"
+                           Foreground="Red"
+                           FontSize="20pt"
+                           Text="*"
+                           ToolTip="{Binding ElementName=placeholder, 
+                                       Path= AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
+                <AdornedElementPlaceholder x:Name="placeholder" />
+              </DockPanel>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+
+
+    <Style TargetType="{x:Type FrameworkElement}" x:Key="ValidatingControl">
+      <Style.Triggers>
+        <Trigger Property="Validation.HasError" Value="True">
+          <Setter Property="ToolTip" Value="{Binding 
+                Path=(Validation.Errors)[0].ErrorContent, 
+                RelativeSource={x:Static RelativeSource.Self}}" />
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+
+
+  </Application.Resources>
+</Application>
